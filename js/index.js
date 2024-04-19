@@ -6,12 +6,13 @@ Account.addEventListener(`click` , ()=>{
     linkAcount.classList.toggle(`show`)
 })
 
-// show Accuont
-
-
+// ======================
+// show Account
+// ======================
 function showUser(){
     let ShowAccuont = document.querySelector(`.ShowAccuont`)
     let linkAcount = document.querySelector(`.linkAcount`)
+
     if(localStorage.getItem(`userName`)){
         ShowAccuont.style.display = `block`;
         linkAcount.style.display = `none`;
@@ -26,8 +27,11 @@ function showUser(){
     }
 }
 showUser()
-// Navlist
 
+
+// ======================
+// Navlist Icon
+// ======================
 let Navlist = document.getElementById(`Navlist`)
 let navList = document.querySelector(`.navList`)
 let iconArr = document.getElementById(`iconArr`)
@@ -36,7 +40,12 @@ Navlist.addEventListener(`click`, ()=>{
     navList.classList.toggle(`show`)
     iconArr.classList.toggle(`show`)
 })
+
+
+// ======================
 // show list Card
+// ======================
+
 let AddToCardHtml = document.querySelector(`.AddToCardHtml`)
 function ShowListCard(){
     AddToCardHtml.classList.toggle(`show`)
@@ -46,13 +55,20 @@ function CancelListBrodect(){
     AddToCardHtml.classList.remove(`show`)
 }
 
+
+// ======================
 // categories shop
+// ======================
 
 let Shop = document.getElementById(`Shop`)
 let categoriesDate = [] ;
 let Cardes = [] ;
 
+
+// ======================
 // slider swiper
+// ======================
+
 const swiper = new Swiper('.swiper', {
     slidesPerView: 6,
     spaceBetween: 30,
@@ -66,11 +82,13 @@ const swiper = new Swiper('.swiper', {
 
 
 
-// categories
+
+// ======================
+// Add categories html 
+// ======================
 
 function categories(){
     categoriesDate.forEach(category => {
-
         let CategorieShop = document.querySelector(`.CategorieShop`)
         let NewCategry ;
         NewCategry = `
@@ -83,12 +101,10 @@ function categories(){
                 <p>${category.count}</p>
             </div>
         </div> `;
-
         CategorieShop.innerHTML +=  NewCategry
     });
 }
 categories()
-
 let prodectesCard1 = document.querySelector(`.prodectesCard1`)
 let prodectesCardOffer = document.querySelector(`.prodectesCardOffer`)
 let searchProdectesCard = document.querySelector(`.searchProdectesCard`)
@@ -96,6 +112,9 @@ let showData = document.getElementById(`showData`)
 
 
 
+// ======================
+// Add Products Html
+// ======================
 
 function prodectAddtoHtml(){
     categoriesDate.forEach(category => {
@@ -136,8 +155,9 @@ function prodectAddtoHtml(){
 }
 
 
-
-
+// ======================
+// Add to Cart Html 
+// ======================
 
 function AddCardId(id){
     let positionthinprodect = Cardes.findIndex((Card) => Card.id == id);
@@ -158,21 +178,22 @@ function AddCardId(id){
     }
         AddCardToHtml()
         AddcardtoMemre()
-        
 }
 
+
+// ======================
 // Add Card to momre
+// ======================
 let AddcardtoMemre = () =>{
     localStorage.setItem(`cardItem` , JSON.stringify(Cardes))
-
 }
-
 
 let listCard = document.querySelector(`.AddCard`)
 let totalpriceCard = document.getElementById(`totalpriceCard`)
 
 const AddCardToHtml = () =>{
     listCard.innerHTML = ``;
+    let totalPrice = 0
     let NumIConShop = 0 ;
     if(Cardes.length > 0){
         Cardes.forEach(card => {
@@ -181,6 +202,10 @@ const AddCardToHtml = () =>{
                 
             let positionthinprodect = categoriesDate.findIndex((category) => category.id == card.id)
             let info = categoriesDate[positionthinprodect]
+
+            let totalPriceQuantity = info.price * card.quantity
+            totalPrice += totalPriceQuantity
+
             
             let  newprodect ;
             newprodect = `
@@ -205,6 +230,7 @@ const AddCardToHtml = () =>{
             </div>    
             `; 
         document.querySelector(`.AddCard`).innerHTML += newprodect
+        document.getElementById('totalpriceCard').innerHTML = totalPrice
         });
     }
 }
@@ -212,7 +238,9 @@ const AddCardToHtml = () =>{
 
 
 
-
+// ======================
+// miuns Card
+// ======================
 
 function miunsCard(id){
     let positionthinprodect = Cardes.findIndex((Card) => Card.id == id);
@@ -244,31 +272,25 @@ let AinCat = () => {
     .then(Response => Response.json())
     .then(data => {
         categoriesDate = data ;
-
         categories()
         prodectAddtoHtml()
         
     })
-    
-
     if(localStorage.getItem(`cardItem`)){
         Cardes = JSON.parse(localStorage.getItem(`cardItem`))
         AddCardToHtml()
-        // totalprice()
-        
-        // RemoveItemKey(id)
-        // console.log(Cardes);
     }
-    
-    
 }
 AinCat()
 
 
+
+// ======================
 // mass Add to Card
+// ======================
+
 function MassAddToCArds(id){
     let MassAddToCard = document.querySelector(`.MassAddToCard`)
-    
     MassAddToCard.innerHTML = `
         <div class="TextMass">
             <h3>Added to cart</h3>
@@ -279,7 +301,6 @@ function MassAddToCArds(id){
     let boed = document.querySelector(`.boed`)
     boed.classList.add(`show`)
 
-
     setTimeout(() => {
         MassAddToCard.style.display = `none`
     }, 2000);
@@ -287,7 +308,9 @@ function MassAddToCArds(id){
 
 
 
+// ======================
 // search Data
+// ======================
 
 function SearchData(value){
     let NewProdect = ``;
@@ -325,19 +348,18 @@ function SearchData(value){
 }
 
 
+
+// ======================
 // show Details Card 
+// ======================
+
 function showCard(id){
 
 let ShowDataDetaills = document.querySelector(`.ShowDataDetaills`)
-
     ShowDataDetaills.classList.add(`show`)
-
     let showDataCard = categoriesDate.find((categor) => categor.id == id);
-
     let newshowprodect ;
-
         newshowprodect = `
-
         <div class="box w-100 h-80 d-flex p-4">
                     <div class="cateImgShow">
                         <img class="w-100" src="${showDataCard.imageUrl}" alt="">
@@ -370,14 +392,12 @@ let ShowDataDetaills = document.querySelector(`.ShowDataDetaills`)
         document.querySelector(`.ShowData`).innerHTML = newshowprodect
 }
 
-
 function cansel(){
 let ShowDataDetaills = document.querySelector(`.ShowDataDetaills`)
     ShowDataDetaills.classList.remove(`show`)
 }
 
 //   shoping 
-
 let btnClick = document.querySelector(`.btn-sucss`)
 
 function AllDataprodect(value){

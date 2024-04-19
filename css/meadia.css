@@ -1,0 +1,27 @@
+@media (max-width: 1000px){ 
+    .searchItem {
+        width: 100% !important;
+    }
+    .contactTitle{
+        display: none;
+    }
+    
+}
+@media (max-width: 800px){ 
+    .footer {
+        justify-content: center !important ;
+        text-align: center;
+    }
+    .footer .box {
+        width : 90% !important;
+        margin: auto;
+
+    }
+    .footer .box p {
+        width: 100% !important;
+    }
+    .footer .box .followUs {
+        justify-content: space-around;
+        margin-top: 50px;
+    }    
+}

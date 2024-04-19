@@ -1,0 +1,111 @@
+[
+
+    {
+        "id" : 1 ,
+        "title" : "categories name",
+        "titleCard" : "camera",
+        "price" : "543",
+        "imageUrl" : "upload/img/product-1.jpg",
+        "count": "189 Products",
+        "ProductType": "Personal"
+    },
+    {
+        "id" : 2 ,
+        "title" :"categories name" , 
+        "titleCard" : "t shirt",
+        "price" : "543",
+        "imageUrl" : "upload/img/product-2.jpg",
+        "count": "29 Products",
+        "ProductType": "Personal"
+    },
+    {
+        "id" : 3 ,
+        "title" :"categories name",
+        "titleCard" : "abjourah",
+        "price" : "348",
+        "imageUrl" : "upload/img/product-3.jpg",
+        "count": "23 Products",
+        "ProductType": "Houseware"
+    },
+    {
+        "id" : 4 ,
+        "title" :"categories name" , 
+        "titleCard" : "coach",
+        "price" : "573",
+        "imageUrl" : "upload/img/product-4.jpg",
+        "count": "100 Products",
+        "ProductType": "clothes"
+    },
+    {
+        "id" : 5 ,
+        "title" :"categories name", 
+        "titleCard" : "airplane",
+        "price" : "150",
+        "imageUrl" : "upload/img/product-5.jpg",
+        "count": "230 Products",
+        "ProductType": "Houseware"
+    },
+    {
+        "id" : 6 ,
+        "title" :"categories name", 
+        "titleCard" : "smart watch",
+        "price" : "200",
+        "imageUrl" : "upload/img/product-6.jpg",
+        "count": "6 Products",
+        "ProductType": "tools"
+    },
+    {
+        "id" : 7 ,
+        "title" :"categories name", 
+        "titleCard" : "blouse",
+        "price" : "349",
+        "imageUrl" : "upload/img/product-7.jpg",
+        "count": "90 Products",
+        "ProductType": "clothes"
+    },
+    {
+        "id" : 8 ,
+        "title" :"categories name", 
+        "titleCard" : "curology",
+        "price" : "458",
+        "imageUrl" : "upload/img/product-8.jpg",
+        "count": "10 Products",
+        "ProductType": "Cosmetics"
+    },
+    {
+        "id" : 9 ,
+        "title" :"categories name", 
+        "titleCard" : "airplane",
+        "price" : "150",
+        "imageUrl" : "upload/img/product-5.jpg",
+        "count": "19 Products",
+        "ProductType": "Personal"
+    },
+    {
+        "id" : 10 ,
+        "title" :"categories name", 
+        "titleCard" : "smart watch",
+        "price" : "200",
+        "imageUrl" : "upload/img/product-6.jpg",
+        "count": "32 Products",
+        "ProductType": "Personal"
+    },
+    {
+        "id" : 11 ,
+        "title" :"categories name", 
+        "titleCard" : "blouse",
+        "price" : "349",
+        "imageUrl" : "upload/img/product-7.jpg",
+        "count":  "89 Products",
+        "ProductType": "clothes"
+    },
+    {
+        "id" : 12 ,
+        "title" :"categories name", 
+        "titleCard" : "curology",
+        "price" : "458",
+        "imageUrl" : "upload/img/product-8.jpg",
+        "count": "100 Products",
+        "ProductType": "Cosmetics"
+    }
+]

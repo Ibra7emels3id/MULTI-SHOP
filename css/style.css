@@ -292,15 +292,14 @@ body{
     color: var(--light);
     z-index: 100;
 }
-.head .headimg .text h4{
-    font-size: 50px;
-
+.head .headimg .text h4 {
+    font-size: 40px;
+    text-align: center;
 }
-.head .headimg .text p{
+.head .headimg .text p {
     text-align: center;
     margin: 20px 0;
-    width: 50%;
-
+    width: 70%;
 }
 .head .headimg .text a{
     color: var(--light);
@@ -373,11 +372,11 @@ body{
     margin: 0;
 
 }
-.head .offerimg .text p{
-    font-size: 40px;
+.head .offerimg .text p {
+    font-size: 30px;
     text-align: center;
     margin: 0;
-
+    padding: 0;
 }
 .head .offerimg .text a{
     color: var(--light);
@@ -554,7 +553,7 @@ body{
     transition: 0.3s ease;
     
 }
-.prodectesToCard .prodectesCard .box:hover{
+.prodectesToCard .prodectesCard .box:hover .m-2{
     box-shadow: 0 0 10px #ddd;
 }
 .prodectesToCard .prodectesCard .box .cateImg{
@@ -579,18 +578,23 @@ body{
     width: 100%;
     top: 850px;
     left: 0;
-    transition: 1s ease;
+    transition: 0.5s ease;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
-.prodectesToCard .prodectesCard .box:hover .cateImg .iconAddCard{
+.prodectesToCard .prodectesCard .box .m-2:hover .cateImg .iconAddCard{
     top: 0px;
+    opacity: 1;
 } 
 .prodectesToCard .prodectesCard .box .cateImg .iconAddCard i{
     font-size: 30px;
-    margin: 12px;
-    padding: 12px;
+    padding: 10px;
     color: var(--warning);
     border: 1px solid var(--warning);
-    cursor: pointer;
+    cursor: pointer; */
+    
 }
 .prodectesToCard .prodectesCard .box .text{
     margin: 30px 0 20px;
@@ -702,6 +706,24 @@ body{
     height: 40px;
     cursor: pointer;
     margin: 10px 20px;
+}
+
+@media (max-width: 700px) {
+    .AddToCardHtml{
+        width: 100%;
+    }
+    .AddCard .AddCardoxs .cateImg img {
+        width: 70px !important;
+    }
+    .AddToCardHtml .listProdect .buttonCard {
+        width: 100%;
+    }
+    .AddToCardHtml .listProdect #totalpriceCard{
+        font-size: 15px;
+        color: white;
+        background-color: brown;
+        padding: 7px !important;
+    }
 }
 
 /* img offer */

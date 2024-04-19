@@ -2,26 +2,26 @@
 let Account = document.getElementById(`Account`)
 let linkAcount = document.querySelector(`.linkAcount`)
 
-Account.addEventListener(`click` , ()=>{
+Account.addEventListener(`click`, () => {
     linkAcount.classList.toggle(`show`)
 })
 
 // ======================
 // show Account
 // ======================
-function showUser(){
+function showUser() {
     let ShowAccuont = document.querySelector(`.ShowAccuont`)
     let linkAcount = document.querySelector(`.linkAcount`)
 
-    if(localStorage.getItem(`userName`)){
+    if (localStorage.getItem(`userName`)) {
         ShowAccuont.style.display = `block`;
         linkAcount.style.display = `none`;
-        Account.innerHTML =`
+        Account.innerHTML = `
         <span id="Account"> my Account </span>
-        `; 
+        `;
         console.log(`test`);
 
-    }else{
+    } else {
         ShowAccuont.style.display = `none`
         console.log(`tooo test`);
     }
@@ -36,7 +36,7 @@ let Navlist = document.getElementById(`Navlist`)
 let navList = document.querySelector(`.navList`)
 let iconArr = document.getElementById(`iconArr`)
 
-Navlist.addEventListener(`click`, ()=>{
+Navlist.addEventListener(`click`, () => {
     navList.classList.toggle(`show`)
     iconArr.classList.toggle(`show`)
 })
@@ -47,11 +47,11 @@ Navlist.addEventListener(`click`, ()=>{
 // ======================
 
 let AddToCardHtml = document.querySelector(`.AddToCardHtml`)
-function ShowListCard(){
+function ShowListCard() {
     AddToCardHtml.classList.toggle(`show`)
 }
 
-function CancelListBrodect(){
+function CancelListBrodect() {
     AddToCardHtml.classList.remove(`show`)
 }
 
@@ -61,8 +61,8 @@ function CancelListBrodect(){
 // ======================
 
 let Shop = document.getElementById(`Shop`)
-let categoriesDate = [] ;
-let Cardes = [] ;
+let categoriesDate = [];
+let Cardes = [];
 
 
 // ======================
@@ -87,10 +87,10 @@ const swiper = new Swiper('.swiper', {
 // Add categories html 
 // ======================
 
-function categories(){
+function categories() {
     categoriesDate.forEach(category => {
         let CategorieShop = document.querySelector(`.CategorieShop`)
-        let NewCategry ;
+        let NewCategry;
         NewCategry = `
         <div data-aos="fade-up" class="m-1 col-lg-3 col-md-6 col-sm-12 pb-1  box d-flex align-items-center justify-content-center ">
             <div class="cateImg w-50">
@@ -101,7 +101,7 @@ function categories(){
                 <p>${category.count}</p>
             </div>
         </div> `;
-        CategorieShop.innerHTML +=  NewCategry
+        CategorieShop.innerHTML += NewCategry
     });
 }
 categories()
@@ -116,11 +116,12 @@ let showData = document.getElementById(`showData`)
 // Add Products Html
 // ======================
 
-function prodectAddtoHtml(){
+function prodectAddtoHtml() {
     categoriesDate.forEach(category => {
-        let NewProdect ;
-            NewProdect = `
-        <div data-aos="fade-up" class="m-2 col-lg-3 col-md-6 col-sm-12 pb-1  box d-flex bg-white">
+        let NewProdect;
+        NewProdect = `
+        <div data-aos="fade-up" class="col-lg-3 col-md-4 col-sm-6 col-xs-12  box d-flex ">
+            <div class='m-2 bg-white'>
                 <div class="cateImg w-100">
                     <img class="w-100 " src="${category.imageUrl}" alt="">
                     <div class="iconAddCard">
@@ -142,14 +143,14 @@ function prodectAddtoHtml(){
                         <p>(${category.quntate})</p>
                     </div>
                 </div>
-                
-            </div>    
+            </div>
+        </div>    
         `;
 
         prodectesCard1.innerHTML += NewProdect
         prodectesCardOffer.innerHTML += NewProdect
         searchProdectesCard.innerHTML += NewProdect
-        
+
     });
     AddCardToHtml()
 }
@@ -159,55 +160,55 @@ function prodectAddtoHtml(){
 // Add to Cart Html 
 // ======================
 
-function AddCardId(id){
+function AddCardId(id) {
     let positionthinprodect = Cardes.findIndex((Card) => Card.id == id);
-    if(Cardes.length <= 0){
+    if (Cardes.length <= 0) {
         Cardes.push({
-            id: id ,
-            quantity : 1 ,
+            id: id,
+            quantity: 1,
         });
     }
-    else if(positionthinprodect < 0){
+    else if (positionthinprodect < 0) {
         Cardes.push({
-            id: id ,
-            quantity : 1 ,
+            id: id,
+            quantity: 1,
         });
     }
-    else{
-        Cardes[positionthinprodect].quantity = Cardes[positionthinprodect].quantity + 1 ;
+    else {
+        Cardes[positionthinprodect].quantity = Cardes[positionthinprodect].quantity + 1;
     }
-        AddCardToHtml()
-        AddcardtoMemre()
+    AddCardToHtml()
+    AddcardtoMemre()
 }
 
 
 // ======================
 // Add Card to momre
 // ======================
-let AddcardtoMemre = () =>{
-    localStorage.setItem(`cardItem` , JSON.stringify(Cardes))
+let AddcardtoMemre = () => {
+    localStorage.setItem(`cardItem`, JSON.stringify(Cardes))
 }
 
 let listCard = document.querySelector(`.AddCard`)
 let totalpriceCard = document.getElementById(`totalpriceCard`)
 
-const AddCardToHtml = () =>{
+const AddCardToHtml = () => {
     listCard.innerHTML = ``;
     let totalPrice = 0
-    let NumIConShop = 0 ;
-    if(Cardes.length > 0){
+    let NumIConShop = 0;
+    if (Cardes.length > 0) {
         Cardes.forEach(card => {
-                NumIConShop = NumIConShop + card.quantity ;
-                Shop.innerHTML = NumIConShop   
-                
+            NumIConShop = NumIConShop + card.quantity;
+            Shop.innerHTML = NumIConShop
+
             let positionthinprodect = categoriesDate.findIndex((category) => category.id == card.id)
             let info = categoriesDate[positionthinprodect]
 
             let totalPriceQuantity = info.price * card.quantity
             totalPrice += totalPriceQuantity
 
-            
-            let  newprodect ;
+
+            let newprodect;
             newprodect = `
             <div class="AddCardoxs">
                 <div class="cateImg">
@@ -220,7 +221,7 @@ const AddCardToHtml = () =>{
 
                 <div class="count">
                     <button id="miunsCardKey" onclick="miunsCard(${info.id})" ><</button>
-                    <p>${card.quantity*info.price}</p>
+                    <p>${card.quantity * info.price}</p>
                     <button onclick="AddCardId(${info.id})">></button>
                 </div>
 
@@ -228,9 +229,9 @@ const AddCardToHtml = () =>{
                     <i onclick="RemoveItemKey(${card.id})" class="fa-solid fa-trash"></i>
                 </div>
             </div>    
-            `; 
-        document.querySelector(`.AddCard`).innerHTML += newprodect
-        document.getElementById('totalpriceCard').innerHTML = totalPrice
+            `;
+            document.querySelector(`.AddCard`).innerHTML += newprodect
+            document.getElementById('totalpriceCard').innerHTML = totalPrice
         });
     }
 }
@@ -242,41 +243,41 @@ const AddCardToHtml = () =>{
 // miuns Card
 // ======================
 
-function miunsCard(id){
+function miunsCard(id) {
     let positionthinprodect = Cardes.findIndex((Card) => Card.id == id);
 
-    if(Cardes.length <= 0){
-        
+    if (Cardes.length <= 0) {
+
     }
-    else if(Cardes[positionthinprodect].quantity === 1){
-        
+    else if (Cardes[positionthinprodect].quantity === 1) {
+
     }
-    else{
-        Cardes[positionthinprodect].quantity = Cardes[positionthinprodect].quantity - 1 ;
+    else {
+        Cardes[positionthinprodect].quantity = Cardes[positionthinprodect].quantity - 1;
     }
-        AddCardToHtml()
-        AddcardtoMemre()
-        
+    AddCardToHtml()
+    AddcardtoMemre()
+
 }
 
 
 function RemoveItemKey(id) {
     let positionthinprodect = Cardes.findIndex((Card) => Card.id == id);
-    Cardes.splice(positionthinprodect , 1)
+    Cardes.splice(positionthinprodect, 1)
     AddCardToHtml();
     AddcardtoMemre()
 }
 
 let AinCat = () => {
     fetch('js/Prodectes.json')
-    .then(Response => Response.json())
-    .then(data => {
-        categoriesDate = data ;
-        categories()
-        prodectAddtoHtml()
-        
-    })
-    if(localStorage.getItem(`cardItem`)){
+        .then(Response => Response.json())
+        .then(data => {
+            categoriesDate = data;
+            categories()
+            prodectAddtoHtml()
+
+        })
+    if (localStorage.getItem(`cardItem`)) {
         Cardes = JSON.parse(localStorage.getItem(`cardItem`))
         AddCardToHtml()
     }
@@ -289,7 +290,7 @@ AinCat()
 // mass Add to Card
 // ======================
 
-function MassAddToCArds(id){
+function MassAddToCArds(id) {
     let MassAddToCard = document.querySelector(`.MassAddToCard`)
     MassAddToCard.innerHTML = `
         <div class="TextMass">
@@ -312,11 +313,11 @@ function MassAddToCArds(id){
 // search Data
 // ======================
 
-function SearchData(value){
+function SearchData(value) {
     let NewProdect = ``;
     for (let i = 0; i < categoriesDate.length; i++) {
 
-        if(categoriesDate[i].titleCard.includes(value.toLowerCase())){
+        if (categoriesDate[i].titleCard.includes(value.toLowerCase())) {
             NewProdect += `
                 <div class="m-2 col-lg-3 col-md-6 col-sm-12 pb-1  box d-flex bg-white">
                         <div class="cateImg w-100">
@@ -353,13 +354,13 @@ function SearchData(value){
 // show Details Card 
 // ======================
 
-function showCard(id){
+function showCard(id) {
 
-let ShowDataDetaills = document.querySelector(`.ShowDataDetaills`)
+    let ShowDataDetaills = document.querySelector(`.ShowDataDetaills`)
     ShowDataDetaills.classList.add(`show`)
     let showDataCard = categoriesDate.find((categor) => categor.id == id);
-    let newshowprodect ;
-        newshowprodect = `
+    let newshowprodect;
+    newshowprodect = `
         <div class="box w-100 h-80 d-flex p-4">
                     <div class="cateImgShow">
                         <img class="w-100" src="${showDataCard.imageUrl}" alt="">
@@ -389,28 +390,28 @@ let ShowDataDetaills = document.querySelector(`.ShowDataDetaills`)
                 </div>
                 
                 `;
-        document.querySelector(`.ShowData`).innerHTML = newshowprodect
+    document.querySelector(`.ShowData`).innerHTML = newshowprodect
 }
 
-function cansel(){
-let ShowDataDetaills = document.querySelector(`.ShowDataDetaills`)
+function cansel() {
+    let ShowDataDetaills = document.querySelector(`.ShowDataDetaills`)
     ShowDataDetaills.classList.remove(`show`)
 }
 
 //   shoping 
 let btnClick = document.querySelector(`.btn-sucss`)
 
-function AllDataprodect(value){
+function AllDataprodect(value) {
 
     console.log(value);
 
 
-        let NewProdect = ``;
-        for (let i = 0; i < categoriesDate.length; i++) {
-    
-            if(categoriesDate[i].ProductType.includes(value)){
-                
-                NewProdect += `
+    let NewProdect = ``;
+    for (let i = 0; i < categoriesDate.length; i++) {
+
+        if (categoriesDate[i].ProductType.includes(value)) {
+
+            NewProdect += `
                     <div class="m-2 col-lg-3 col-md-6 col-sm-12 pb-1  box d-flex bg-white">
                             <div class="cateImg w-100">
                                 <img class="w-100 " src="${categoriesDate[i].imageUrl}" alt="">
@@ -435,10 +436,10 @@ function AllDataprodect(value){
                             
                         </div>    
                     `;
-                searchProdectesCard.innerHTML = NewProdect
-            }else if(value === `All`){
-                
-                NewProdect += `
+            searchProdectesCard.innerHTML = NewProdect
+        } else if (value === `All`) {
+
+            NewProdect += `
                     <div class="m-2 col-lg-3 col-md-6 col-sm-12 pb-1  box d-flex bg-white">
                             <div class="cateImg w-100">
                                 <img class="w-100 " src="${categoriesDate[i].imageUrl}" alt="">
@@ -463,26 +464,26 @@ function AllDataprodect(value){
                             
                         </div>    
                     `;
-                searchProdectesCard.innerHTML = NewProdect
-            }
+            searchProdectesCard.innerHTML = NewProdect
         }
     }
+}
 
 // ViewProdectss
 
-function ViewProdectss(){
+function ViewProdectss() {
     let userName = localStorage.getItem(`userName`)
     console.log(`test`);
-    if(userName){
+    if (userName) {
         window.location = `checkProdectss.html`
-    }else{
+    } else {
         window.location = `login.html`
     }
 }
 
 // Cancel list check prodect
 
-function Cancellistcheckprodect(){
+function Cancellistcheckprodect() {
     window.location = `index.html`
     console.log(`test`);
 }
